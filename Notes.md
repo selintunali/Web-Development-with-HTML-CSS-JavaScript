@@ -77,7 +77,7 @@ HTML5 also defines a **sandboxed attribute** , used on `<iframe>` elements which
 - `<hr>`: adds horizontal line
 - `<h1> </h1>`: Largest heading; `<h6> </h6>`: Smallest heading
 - `<br>`: breaks line
-- `<a href="https://..">Text</a>` : Hyperlink reference. Can also link to a section in code with #sectionname instead of hyperlink.
+- `<a href="https://..">Text</a>` : Hyperlink reference. Can also link to a section in code with #id instead of hyperlink.
 - `<ul> </ul>` : unordered list
 - `<ol> </ol>` : ordered list
 - `<li> </li>` : list item
@@ -106,8 +106,8 @@ HTML5 also defines a **sandboxed attribute** , used on `<iframe>` elements which
         `<option value="bananas"></option>`<br>
         `<option value="oranges"></option>`<br>
  `</datalist>`
-  - `<script src="Function.js"></script>` : used within header to call JavaScript file for dynamic functions
-  - `<link rel="stylesheet" href="Style.css">` : used within header to call CSS file for page style
+- `<script src="Function.js"></script>` : used within header to call JavaScript file for dynamic functions
+- `<link rel="stylesheet" href="Style.css">` : used within header to call CSS file for page style
 - Inline elements for styling content directly in the HTML: 
   - `<strong>` makes text bold
   - `<u>`underlines e.g. `<p><strong><u> Planets in the solar system: </u></strong> </p>`
