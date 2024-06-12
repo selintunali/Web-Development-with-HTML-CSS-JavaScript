@@ -26,15 +26,11 @@ Building websites and applications is divided into 2 main areas:
 
 ### 1. HTML (Hypertext Markup Language)
 
-HTML is used to create the physical structure that contains elements such as text, links, images/videos etc. using tags (</>).
-
-**Tags(</>)** represent elements of a page. **HTML elements** are pieces of content that are assigned to labels *e.g. paragraph, list, tables.*
+HTML is used to create the physical structure that contains elements such as text, links, images/videos etc. using **tags (</>)**.
 
 HTML was introduced in 1990, HTML5 was developed in 2007.
 
-**HTML5** supports pages written in **HTML** or **XML** syntax. 
-ß
-
+**HTML5** supports pages written in **HTML** or **XML (eXtensive Markup Language)** syntax. 
 
         HTML
         - not case sensitive
@@ -73,6 +69,7 @@ HTML was introduced in 1990, HTML5 was developed in 2007.
         </body>
 </html>
 ```
+**NOTE: `<!DOCTYPE html>` is a declaration not an element**
 
 HTML5 also defines a **sandboxed attribute** , used on `<iframe>` elements which specifies extra set of content restrictions and can be used when hosting untrusted content. (e.g.`<iframe src="https://example.com" sandbox></iframe>`)
 
@@ -111,8 +108,10 @@ HTML5 also defines a **sandboxed attribute** , used on `<iframe>` elements which
  `</datalist>`
   - `<script src="Function.js"></script>` : used within header to call JavaScript file for dynamic functions
   - `<link rel="stylesheet" href="Style.css">` : used within header to call CSS file for page style
+- Inline elements for styling content directly in the HTML: 
+  - `<strong>` makes text bold
+  - `<u>`underlines e.g. `<p><strong><u> Planets in the solar system: </u></strong> </p>`
 
-**NOTE: `<!DOCTYPE html>` is a declaration not an element**
 **NOTE: Use # when calling a HTML element by it's id**
 
 ### 2. CSS (Cascading Style Sheets)
@@ -156,7 +155,9 @@ h1{
 
 **NOTE: link is a self-closing element** 
 
-**NOTE: Not all browsers fully support all features in HTML5 or CC3 specifications. Browse caniuser.com to search for the feature.** 
+**NOTE: Not all browsers fully support all features in HTML5 or CSS3 specifications. Browse caniuser.com to search for the feature.** 
+
+**NOTE: `<div style="clear:both;"></div>` is used to clear floats in layouts and to control document flow.**
 
 ### 3. JavaScript
 
@@ -164,17 +165,34 @@ JavaScript is an object-oriented programming language used in conjunction with H
 
 *To give an example, use HTML to add a login button, CSS to style that button, and JavaScript to add login functionality.*
 
+Scripting (`<script>`) can be included directly inside HTML for short scripts or src attribute is used to point to an external javascript file e.g. `<script src="script.js"></script>`
 
-2 data types of JavaScript: primitive and wrapper objects(primitive wrappers)
+Scripts are bound to events so they can run automatically for interactivity.
+*Examples of scripts that are tied to instrinsic events: onload=, onclick=, onmousehowver=, onselect=, onsubmit= etc.*
 
-**JavaScript Primitives:** (immutable)
+*Code Example:*
+```
+<button type = "button" onclick="showAnswers()">Show Solution
+        <script>
+                function showAnswers() {
+                        altert("A")
+                }
+        </script>
+</button>
+```
+
+NOTE: scripting may not be allowed by every browser, the `<noscript>` tag provides an alternate when scripting is disabled. 
+
+2 data types of JavaScript:
+
+**1. JavaScript Primitives:** (immutable)
 - **string** ("Hello")
 - **number** (42, 3.14)
 - **boolean** (true or false)
 - **null**
 - **undefined**
 
-**Wrapper Objects:** (mutable; provide way to treat primitives as objects)
+**2. Wrapper Objects:** (mutable; provide way to treat primitives as objects)
 - new **String**("hello")
 - new **Number**(42)
 - new **Boolean**(true)
@@ -266,7 +284,10 @@ var add("hello", "world"); //returns helloworld
 })
 ```
 
-# DOM Tree
+**Expert Recommendations:**
+- Avoid global variables to avoid name collision
+
+# DOM (Document Object Model) Tree
 
 A DOM tree is an in-memory representation of a document. It describes how a website is structured.
 

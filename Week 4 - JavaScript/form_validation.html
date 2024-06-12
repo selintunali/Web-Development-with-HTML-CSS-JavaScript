@@ -1,0 +1,52 @@
+<DOCTYPE! html>
+<html>
+    <head>
+        <title>
+            Contact Details
+        </title>
+        <script>
+            function submit(){
+                //code;
+            };
+            function checkdata(){
+                var username = document.getElementById("nameinput");
+                var email = document.getElementById("email");
+                
+                if(username.value==""){
+                    alert("Please enter your name");
+                    username.focus();
+                    return false
+                }
+
+                if(email.value==""){
+                    alter("Please enter your email:");
+                    email.focus();
+                    return false;
+                }
+
+                // If both have values
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Enter your contact details:</h2>
+        <form id="form1" onsubmit="checkdata()">
+            <label>Name:</label>
+            <input type="text" id = "nameinput">
+            <br>
+            <br>
+            <label>Email address:</label>
+            <input type="text" id="addressinput">
+            <br>
+            <br>
+            
+            <button>Submit</button>
+            <!--
+            or:
+            <input type="submit" value="Submit">
+            -->
+            <button>Reset</button>
+        </form>
+    </body>
+</html>
