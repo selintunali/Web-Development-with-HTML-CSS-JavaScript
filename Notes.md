@@ -45,7 +45,7 @@ HTML was introduced in 1990, HTML5 was developed in 2007.
                 <title>Sample Page</title>
         </head>
         <body>
-                <p>Example paragrapg</p>
+                <p>Example paragraph</p>
                 <!--This is a comment-->
         </body>
 </html>
@@ -100,17 +100,22 @@ HTML5 also defines a **sandboxed attribute** , used on `<iframe>` elements which
   - `<input type="number>"` : accepts any number value ; can be used with min and max values e.g. `<input type="number min="5" max="7">`
   - `<input type="tel>"` : telephone number but does not enforce numeric only as different country or area codes might require special characer such as + or () ; can set a pattern e.g. `<input type="tel pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}>"`
   - `<input type="email" placeholder="abc@gmail.com">` or `<input type="email" placeholder="abc@gmail.com" required >` 
+  - `<input type="range" id="rate" min="1" max="20" value="10.25" step="0.25" onchange="updateRate()"> `
+  - `<span id="rate_val">10.25</span>%` : `<span>` tag in HTML is an inline container used to group and style a part of text
   - `<input type="text" list="fruits">` <br>
-  `<datalist id="fruits">`<br>
-        `<option value="apples"></option>`<br>
-        `<option value="bananas"></option>`<br>
-        `<option value="oranges"></option>`<br>
- `</datalist>`
+        `<datalist id="fruits">`<br>
+                `<option value="apples"></option>`<br>
+                `<option value="bananas"></option>`<br>
+                `<option value="oranges"></option>`<br>
+        `</datalist>`
+- `<textarea id="new_recommendation" cols="500" rows="10" placeholder="Message"></textarea>` : Adds a text box for large input text
 - `<script src="Function.js"></script>` : used within header to call JavaScript file for dynamic functions
 - `<link rel="stylesheet" href="Style.css">` : used within header to call CSS file for page style
 - Inline elements for styling content directly in the HTML: 
-  - `<strong>` makes text bold
-  - `<u>`underlines e.g. `<p><strong><u> Planets in the solar system: </u></strong> </p>`
+  - `<strong> </strong>` makes text bold
+  - `<u> </u>`underlines e.g. `<p><strong><u> Planets in the solar system: </u></strong> </p>`
+  - `<mark> </mark>` highlights between text in yellow
+- `<span>&#8220;</span>Some text<span>&#8221;</span>` adds quotation marks between text
 
 **NOTE: Use # when calling a HTML element by it's id**
 
@@ -155,7 +160,7 @@ h1{
 
 **NOTE: link is a self-closing element** 
 
-**NOTE: Not all browsers fully support all features in HTML5 or CSS3 specifications. Browse caniuser.com to search for the feature.** 
+**NOTE: Not all browsers fully support all features in HTML5 or CSS3 specifications. Browse caniuse.com to search for the feature.** 
 
 **NOTE: `<div style="clear:both;"></div>` is used to clear floats in layouts and to control document flow.**
 
@@ -167,8 +172,7 @@ JavaScript is an object-oriented programming language used in conjunction with H
 
 Scripting (`<script>`) can be included directly inside HTML for short scripts or src attribute is used to point to an external javascript file e.g. `<script src="script.js"></script>`
 
-Scripts are bound to events so they can run automatically for interactivity.
-*Examples of scripts that are tied to instrinsic events: onload=, onclick=, onmousehowver=, onselect=, onsubmit= etc.*
+Scripts are bound to events so they can run automatically for interactivity. Examples of **event binders**: *onload=, onclick=, onmousehover=, onselect=, onsubmit= , onchange= etc.*
 
 *Code Example:*
 ```
@@ -197,12 +201,23 @@ NOTE: scripting may not be allowed by every browser, the `<noscript>` tag provid
 - new **Number**(42)
 - new **Boolean**(true)
 - numArray = new **Array**(0,1,2,3,4,5)
-- var newDate = new **Date**("2012-1-17 13:15:30"); var newDate = new Date(2012,0,17); var newDate = new Date();
+- var newDate = new **Date**("2012-1-17 13:15:30"); var newDate = new Date(2012,0,17); var newDate = new Date(); new Date().getFullYear() 
 - throw new **Error**("Only values 1-10 are allowed") : custom error message
 
 **NOTE: Month number starts from zero!**
 
 **NOTE: If no date is provided means current local time**
+
+**NOTE: getFullYear() in JavaScript will retrieve year from date**
+
+**NOTE: Can parse number to int or float: parseInt(principal) + parseFloat(interest)**
+
+Example:
+```
+var a = new String(“Hello”); // String Object
+var b = “Hello”; // Primitive String
+a===b; //false ;  checks type and value
+```
 
 **Creating Objects:**
 1) **Object Literals:** most common way to create objects
@@ -275,7 +290,11 @@ functions add(x,y){
 var x = add(1,2); //returns 3
 var add("hello", "world"); //returns helloworld
 ```
+another example: 
 
+```
+var total = add(10,"3"); // returns "10 3"
+```
 **Self executing functions** start running immeadiately after they have been declared and can be anonymous.
 
 ```
@@ -283,15 +302,110 @@ var add("hello", "world"); //returns helloworld
         //statements
 })
 ```
+**Arrow functions syntax**
+```
+let functions=(x,y)=> {
+         return x+y;
+}
+```
+or if a single value
+```
+let functions=(x,y)=> x+y;
+```
+
+
+**JavaScript Operators:**
+
+1) **Arithmetic Operators:** +, -, *, /, **, %, +=, -=, etc.
+2) **Comparison Operators:** ==, === checks if values are equal and of the same type, !=, <, >, <=, >=, etc.
+3) **Logical Operators:** && and, || or, ! if condition is not met
+
+**Collections:**
+1) **Array:** is an indexed collection. The index starts from 0.
+```
+let myArray = ["Jack", "Jill", 4, 5 , true]
+console.log(myArray[0]) // returns Jack
+console.log(myArray[4]) // returns true
+```
+To iterate through arrays there is a special type of loop **forEach**
+```
+let myArray = ["Jack","Jill",4,5,true]
+myArray.forEach(element => {
+    console.log(element)
+})
+```
+2) **Map:** object maps a key to a value
+```
+let myMap = new Map();
+//Add a key-value pair to the map, with a key of "name" and a value of "John". 
+myMap.set("name", "John")
+//Add another key-value pair to the map, with a key of "age" and a value of 22.
+myMap.set("age", 22)
+myMap.forEach((val,key) => {
+    console.log(key, " - ", val)
+})
+``` 
+
+**JavaScript Has 6 Types of Errors:**
+- **EvalError:** An error related to the eval() function
+- **RangeError:** Thrown when a value is outside the allowable range.
+- **ReferenceError**: When a non-existent variable is referenced.
+- **SyntaxError:** When there is a syntax mistake in the code.
+- **TypeError:** When a variable or parameter is not of a valid type.
+- **URIError:** When there is an error in encodeURI() or decodeURI().
 
 **Expert Recommendations:**
 - Avoid global variables to avoid name collision
+- switch-case statements are useful to replace multiple if-else conditions
+```
+user_input = parseInt(user_input)
+    switch(user_input){
+        case 1: console.log("Sunday"); break;
+        case 2: console.log("Monday"); break;
+        case 3: console.log("Tuesday"); break;
+        case 4: console.log("Wednesday"); break;
+        case 5: console.log("Thursday"); break;
+        case 6: console.log("Friday"); break;
+        case 7: console.log("Saturday"); break;
+        default: console.log("Invalid entry");
+    }
+```
+- loops are useful when same block of code need to be executed many times
+```
+for (let i=0; i<10; i++) {
+        console.log(user_input, " X ", i, " = ", user_input*i)
+    }
+```
 
-# DOM (Document Object Model) Tree
+# DOM (Document Object Model)
 
-A DOM tree is an in-memory representation of a document. It describes how a website is structured.
+DOM is the programming interface between HTML or XHTML and JavaScript. It allows JavaScript to access and modify the content, structure, and style of web pages.
 
-HTML user agents aka browsers parse markup into a DOM tree. 
+**Basic DOM Model for browsers:** (top to bottom)
+
+![Alt text](<Screenshot 2024-06-14 at 4.29.45 PM.png>)
+
+- **Window Object** : controls the environment; automatically created when browser loads the page. *Window object dialog boxes: window.alert (code: alert("message);), window.confirm (code: confirm("message");), window.prompt (code: prompt("message", "defaultReply"))*
+
+- **History Object** : keeps internal details about recent history on the browser
+- **Location** : contains information about URL
+- **Navigator Object**
+- **Screen Object** : useful for determining screen size of the browser
+- **Document Object** : provides access to all HTML elements on a page
+
+
+**A DOM tree** is an in-memory representation of a document. HTML user agents aka browsers parse markup into a DOM tree. 
+
+The object diagram can also be represented as a tree structure that corresponds to the structure of the HTML document.
+
+![Alt text](<Screenshot 2024-06-14 at 4.40.41 PM.png>)
+
+
+The branches of the tree structure are termed **nodes**. There are two types of nodes in W3C DOM: 
+
+1) **Element Nodes:** All HTML tags (html, head, meta, title ,body etc.)
+2) **Text Nodes:** actual text that go between an element start tag and end tag *e.g. `<title>Page Title</title>`*
+
 
 # DOM Tree Accessors
 
@@ -328,6 +442,17 @@ DOM Tree Accessors are HTML document APIs that provide access to all HMTL elemen
 **NOTE: This will overwrite inline CSS**
 
 - **element.setAttribute(attrName, attrValue**) e.g. `document.getElementById("theImage").setAttribute("src", "another.gif");`
+- **element.value.trim() != ""** : removes whitespaces
+- **element.focus()** : useful to return focus to input box after an alert box condition such as if entered value is not allowed. 
+
+An alternative way to access nested objects  is the dot notation 
+
+Ex: element field1 can be accessed by: 
+- document.forms[0].elements[0] or
+- document.forms["form1"].elements["field1"] or
+- document.form1.field1
+
+![Alt text](<Screenshot 2024-06-14 at 4.56.49 PM.png>)
 
 # APIs (Application Programming Interface)
 
@@ -345,7 +470,7 @@ REST APIs follow the CRUD (Create, Read, Update and Delete) paradigm. These CRUD
 
 # Frameworks
 
-A framework provide a skeleton for the application, dictating it's structure and flow. 
+A framework provides a skeleton for the application, dictating it's structure and flow. 
 
         Libraries
         - collection of re-usable code
