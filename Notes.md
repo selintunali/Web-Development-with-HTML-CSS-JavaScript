@@ -179,13 +179,14 @@ Scripts are bound to events so they can run automatically for interactivity. Exa
 <button type = "button" onclick="showAnswers()">Show Solution
         <script>
                 function showAnswers() {
-                        altert("A")
+                        alert("A")
                 }
         </script>
 </button>
 ```
 
-NOTE: scripting may not be allowed by every browser, the `<noscript>` tag provides an alternate when scripting is disabled. 
+**NOTE: scripting may not be allowed by every browser, the `<noscript>` tag provides an alternate when scripting is disabled.**
+
 
 2 data types of JavaScript:
 
