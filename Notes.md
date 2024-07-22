@@ -86,8 +86,8 @@ HTML5 also defines a **sandboxed attribute** , used on `<iframe>` elements which
 - `<th> </th>` : table heading
 - `<td> </td>` : table data
 - `<img src= "https..." width=... height=..>`
-- `<figcaption> </figcaption>` : Figure caption; usually comes after img element
 - `<figure> </figure>` : structural element that allows content grouping
+- `<figcaption> </figcaption>` : Figure caption; usually comes after img element
 - Comment in HTML: `<!--This is a comment -->`
 - `<div> </div>` : structural element used to group content
 - `<section> </section>` : structural element used to group more specific content
@@ -101,13 +101,13 @@ HTML5 also defines a **sandboxed attribute** , used on `<iframe>` elements which
   - `<input type="tel>"` : telephone number but does not enforce numeric only as different country or area codes might require special characer such as + or () ; can set a pattern e.g. `<input type="tel pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}>"`
   - `<input type="email" placeholder="abc@gmail.com">` or `<input type="email" placeholder="abc@gmail.com" required >` 
   - `<input type="range" id="rate" min="1" max="20" value="10.25" step="0.25" onchange="updateRate()"> `
-  - `<span id="rate_val">10.25</span>%` : `<span>` tag in HTML is an inline container used to group and style a part of text
   - `<input type="text" list="fruits">` <br>
         `<datalist id="fruits">`<br>
                 `<option value="apples"></option>`<br>
                 `<option value="bananas"></option>`<br>
                 `<option value="oranges"></option>`<br>
         `</datalist>`
+- `<span id="rate_val">10.25</span>%` : `<span>` tag in HTML is an inline container used to group and style a part of text
 - `<textarea id="new_recommendation" cols="500" rows="10" placeholder="Message"></textarea>` : Adds a text box for large input text
 - `<script src="Function.js"></script>` : used within header to call JavaScript file for dynamic functions
 - `<link rel="stylesheet" href="Style.css">` : used within header to call CSS file for page style
@@ -224,13 +224,11 @@ a===b; //false ;  checks type and value
 1) **Object Literals:** most common way to create objects
 ```
 let person = {
-        name: "John",
-        age: 30,
-        isStudent: false,
-        greet: function() {
-                console.log("Hello, " + this.name);
-        }
+    name: "Jason",
+    age: 20
 };
+
+console.log(person); // { name: 'Jason', age: 20 }
 ```
 
 2) **Constructor Functions:** 
@@ -239,27 +237,41 @@ let person = {
 
 ```
 function Person(name, age) {
-        this.name = name;
-        this.age = age;
-        this.greet = function() {
-                console.log("Hello, " + this.name);
-        };
+    this.name = name;
+    this.age = age;
 }
 
-var p = new Person("John", 30);
-alert(p.greet()); // displays Hello, John
+let person1 = new Person("Jason", 20);
+console.log(person1); // Person { name: 'Jason', age: 20 }
 ```
 
-3) **`Object.create()` & Prototype:**
+3) **Class Syntax** introduced with ES6
 ```
-let proto = {
-        greet: function() {
-                console.log("Hello!");
-        }
+class Rectangle {
+    constructor(height, width){
+        this.height = height;
+        this.width = width;
+    }
+}
+
+let myRectangle = new Rectangle(10, 5);
+console.log(myRectangle); // Rectangle { height: 10, width: 5 }
+```
+
+4) **`Object.create()` & Prototype:**
+```
+let personPrototype = {
+    greet: function() {
+        console.log("Hello, my name is " + this.name);
+    }
 };
 
-let person = Object.create(proto);
-person.name = "Bob";
+let person = Object.create(personPrototype);
+person.name = "Jason";
+person.age = 20;
+
+console.log(person); // { name: 'Jason', age: 20 }
+person.greet(); // Hello, my name is Jason
 ```
 
 New function or property can be added to an object by modifying the prototype of the object. For instance: 
@@ -490,9 +502,9 @@ A framework provides a skeleton for the application, dictating it's structure an
         - ex: Django for Python web development
 
 
-### JavaScript Frameworks
+### JavaScript Front-End Frameworks
 
-- **React** (developed by Facebook) : focuses on building user interfaces and often used for single-page appliations where content updates frequently
+- **React** (developed by Meta) : focuses on building user interfaces and often used for single-page appliations where content updates frequently
 
 - **Angular** (developed by Google) : comprehensive solution for developing highly interactive web applications with strong emphasis on reusable components and modules. 
 
@@ -501,6 +513,191 @@ A framework provides a skeleton for the application, dictating it's structure an
 ### Node.js
 
 Node.js is not a framework but a **runtime** that allows JavaScript to be used for server-side development, enabling full-stack development with JavaScript.
+
+# Top rated front-end frameworks
+
+1. React
+2. Node.js
+3. jQuery
+4. Angular
+5. Express
+
+# React
+
+Open source JavaScript library developed by Meta. 
+
+**Features of React:**
+- **Component based architecture** : e.g. Header, Left Section, Right Section, Footers. Encapsulating UI functionality in individual files eliminates code duplication and emphasizes reusable UI elements
+
+- **Declarative syntax** : this lets developers focus on intended UI behaviour while React manages the underliyng DOM (focuses on what to do rather than how)
+
+- **Virtual DOM** : Generates virtual copies when changes occur in any component and compares them to real DOM updating only the essential segments to optimize performance and minimize DOM modifications
+
+- **1-way data binding** : ensures data flows unidirectionally form parent to child components simplifying data management and reducing bugs
+
+- **JavaScript XML (JSX)** : JSX is a JavaScript extension that enables HTML-like code within JavaScript
+
+- **Hook Employment** : Hooks allow developers to handle states and other React features eliminating the need for class-based coding. 
+
+**React folder structure:**
+- **Node_modules:** contains all dependencies
+- **public:** contains static assets like HTML files, images and fonts
+- **src:** contains source code for application. Inside src, there will be:
+   - **App.css**
+   - **App.jsx:** Root component of the application
+   - **index.css**
+   - **index.html:** Entry point for web app
+   - **main.jsx:** Entry point for the application
+   - **package.json:** Contains metadata about the project and dependencies. Also includes scripts for running, building and testing application. 
+   - **vite.config.js:** Configuration settings for Vite build tool
+   - **.gitignore**
+   - **README.md**
+
+# Build Tools:
+1) **CRA Tool: npx create-react-app app-name**
+- installs unnecessary files and folder
+- leads to large file size
+
+2) **Vite Tool: npm create vite@latest**
+- improved development tool
+- Used with **React**, **Angular** or **JavaScript**
+
+**How to create React project using Vite Tool:**
+1) Type npm create vite@latest
+2) Select React as framework
+3) Select JavaScript as variant
+4) Terminal will give instructions
+5) Link and port number will be displayed
+6) command: npm run dev
+
+# EcmaScript6 (ES6, 2015)
+
+New features were introduced in JavaScript as part of ES6 are:
+
+**1. Keyword: var**
+It has global scope
+
+**2. Keyword: let**
+It has local scope
+*e.g.*
+```
+{
+        let num = 5;
+        console.log(num); //returns 5
+        num = 6;
+        console.log(num); //returns 6
+}
+console.log(num); //Error: num out of scope
+```
+
+**3. Keyword: const**
+It cannot change
+*e.g.*
+```
+const num = 5;
+console.log(num);
+num = 6; //Error
+```
+
+**4. Arrow Functions with parameters**
+
+**If returns a value must use curly brackets!**
+*e.g.*
+```
+const oneParamArrowFunc = name => {return "hello" + name };
+```
+
+*e.g.*
+```
+const twoParamsArrowFuncWithoutReturn = (first, last) => console.log("hello" + first + " " + last);
+```
+
+*e.g.*
+```
+cons twoParamsTwoLinesArrowFunc = (first, last) => { const greeting = "hello" ; return greeting + " " + first + " " + last;}
+```
+
+**5. Promise**
+
+A promise is an object which represents the completion of an asynchronous operation and it's return value. Takes states: pending, fulfilled or rejected. 
+
+```
+let promiseArgument = (resolve, reject) => {
+        setTimeout(()=> {
+                let currTime = new Date().getTime();
+                if(currTime % 2 === 0){
+                        resolve("Success!")
+                  else{ reject("Failed!!!) }
+                }
+        }, 2000)};
+
+let myPromise = new Promise(promiseArgument); // function setTimeout passed to constructor of the promise object 
+```
+
+**6. Classes**
+Makes OOP feasible
+Blueprint for creating objects
+
+*e.g.*
+```
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+let person1 = new Person("Jason", 20);
+console.log(person1);
+console.log(person1.name);
+console.log(person1.age);
+
+```
+
+Use **constructor** when want to create an object of class. New object of that class can be created using the "new" keyword.
+
+*e.g.*
+```
+class Rectangle {
+        constructor(height, width){
+                this.height = height;
+                this.width = width;
+                console.log("Rectangle Created");
+                console.log("Height" + this.height);
+                console.log("Width" + this.width);
+        }
+};
+let myRetangle = new Rectangle(10,5)
+```
+
+**Inheritance**
+The subclass may call the superclass constructor with a **super()** method call
+
+*e.g.*
+```
+class Square extends Rectangle
+{
+        constructor(height, width){
+                if(height===width){
+                        super(height, width)
+                }else{
+                        super(height, width);
+                }
+        }
+}
+let mySquare =  new Square(5,5)
+```
+
+# Introduction to JSX (JavaScript Syntax Extension / JavaScript HTML)
+
+Use JSX to create React elements which then renders elements to DOM. 
+*e.g.*
+```
+const myHeader = <h1>This is a sample JSX code snippet</h1>
+```
+
+Browsers don't understand JSX, so need **Babel** to compile JSX code and transform it into standard JavaScript objects. 
+
+Use command '**create-react-app**' to handle the compilation. 
+
+**!JSX outperforms JavaScript because it optimizes during compilation and it more secure!**
 
 # Packages and Package Managers
 
@@ -520,15 +717,6 @@ Build automation does the following:
 
 - SQL
 - Object Relational Mapping (ORM) e.g. Dapper in C#, SQLAlchemy in Python
-
-
-
-
-
-
-
-
-
 
 # VS Code extensions
 - C# Development Kit
